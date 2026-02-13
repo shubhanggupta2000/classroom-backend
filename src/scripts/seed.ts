@@ -387,6 +387,7 @@ async function seed() {
         .returning({ id: departments.id });
     }
 
+    // If department still doesn't exist, throw an error
     if (!departmentRow) {
       throw new Error(`Failed to create or find department: ${dept.code}`);
     }
