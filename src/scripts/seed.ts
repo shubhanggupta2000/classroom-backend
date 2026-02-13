@@ -387,6 +387,10 @@ async function seed() {
         .returning({ id: departments.id });
     }
 
+    if (!departmentRow) {
+      throw new Error(`Failed to create or find department: ${dept.code}`);
+    }
+
     // Insert subjects for this department
     for (const subj of dept.subjects) {
       await db
